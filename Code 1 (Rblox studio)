@@ -1,0 +1,31 @@
+local tw = game.ReplicatedStorage.Tw
+local twcopy = tw:Clone()
+local p
+local char
+local UIS = game:GetService("UserInputService")
+
+
+game.Players.PlayerAdded:Connect(function(player)
+	p = player
+	char = player.Character
+	twcopy.Parent = game.Workspace
+	
+	wait(3)
+	
+	while true do
+		wait(0.1)
+		local x = p.Character.UpperTorso.Position.X+2.5
+		local y = 2
+		local z = p.Character.UpperTorso.Position.Z+1
+	    twcopy:MoveTo(Vector3.new(x, y, z))
+		
+	end
+end)
+
+--barrage
+game.ReplicatedStorage.BarrageEvent.OnServerEvent:Connect(function()
+	print("Running")
+	local anim = script.Barrage
+	local animl = game.Workspace.Tw.Humanoid:LoadAnimation(anim)
+	animl:Play()
+end)
