@@ -1,0 +1,10 @@
+local UIS = game:GetService("UserInputService")
+
+UIS.InputBegan:Connect(function(input, gameProcessedEvent)
+	if input.KeyCode == Enum.KeyCode.E then
+		print("Success")
+		local event = game.ReplicatedStorage.BarrageEvent
+		event:FireServer()
+		wait(3)
+	end
+end)
